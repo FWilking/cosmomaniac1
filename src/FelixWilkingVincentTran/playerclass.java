@@ -2,6 +2,8 @@ package FelixWilkingVincentTran;
 
 public class playerclass extends Boardobject {
     private String name;
+    int xLoc;
+    int yLoc;
 
     public playerclass(String name, int xLoc, int yLoc){
         this.name = name;
@@ -9,7 +11,15 @@ public class playerclass extends Boardobject {
         this.yLoc = yLoc;
     }
 
-    int xLoc, yLoc;
+    public void setxLoc(int xLoc)
+    {
+        this.xLoc = xLoc;
+    }
+
+    public void setyLoc(int yLoc)
+    {
+        this.yLoc = yLoc;
+    }
 
     public String getName()
     {
@@ -21,19 +31,10 @@ public class playerclass extends Boardobject {
         return xLoc;
     }
 
-    public  void setxLoc(int xLoc)
-    {
-        this.xLoc = xLoc;
-    }
-
     public int getyLoc()
     {
         return yLoc;
     }
 
-    public  void setyLoc(int yLoc)
-    {
-        this.yLoc = yLoc;
-    }
 
 }

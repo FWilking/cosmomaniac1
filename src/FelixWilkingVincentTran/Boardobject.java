@@ -23,7 +23,13 @@ public class Boardobject {
 
 
     public String getName() {
-        return this.name;
+        if (this.name == " ")
+        {
+            return "empty space";
+        }
+        else {
+            return this.name;
+        }
     }
 
     public char getSymbol() {
