@@ -9,6 +9,7 @@ public class Main {
         int difficulty = 50; //Set the variable for changing the density of planets in the array
         double randomX = 0; //Random number generator for X coordinate
         double randomY = 0; //Random number generator for Y coordinate
+        double randomCount = 0;
         int x = 0; //X coordinate
         int y = 0; //Y coordinate
 
@@ -18,10 +19,22 @@ public class Main {
         for(int i = 0; i < difficulty; i++) {
             randomX = Math.random() * boardlength;
             randomY = Math.random() * boardlength;
-            boardarray[(int) (randomX)][(int) (randomY)] = new planet(3);
+            randomCount = Math.random() * 5;
+            //if (randomCount == 1) {
+                boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Icy and cold yet has soothing blue charm to it");
+            //}
+            /*if (randomCount == 2) {
+                boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Dry and hot and makes you sweaty just looking at it");
+            }
+            if (randomCount == 3) {
+                boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Lush and humid filled with endless forests, swamps, and marshes");
+            }
+            if (randomCount == 4) {
+                boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Windy and temperate, it reminds you of a place you left so long ago..");
+            }*/
         }
 
-        //Loops through every spot in the array and if it has no planet, fills the spot with ab empty space
+        //Loops through every spot in the array and if it has no planet, fills the spot with an empty space
         for (int j = 0; j < boardlength; j++)
         {
             if (boardarray[x][j] == null) {
