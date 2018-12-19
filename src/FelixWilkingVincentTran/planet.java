@@ -6,12 +6,10 @@ import java.util.List;
 public class planet extends Boardobject {
     public static List<planet> planets = new ArrayList<>();
     private int size;
-    private String description;
 
-    public planet(int size, String description) {
+    public planet(int size) {
         super();
         this.size = size;
-        this.description = description;
         planet.planets.add(this);
     }
 
@@ -19,10 +17,4 @@ public class planet extends Boardobject {
     {
         return planets.get(0);
     }
-
-    public String getDescription()
-    {
-        return planets.get(0).getDescription();
-    }
-
 }

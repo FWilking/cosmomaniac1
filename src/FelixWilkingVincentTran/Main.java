@@ -2,14 +2,14 @@ package FelixWilkingVincentTran;
 
 import java.util.Scanner;
 
-public class Main {
+public class
+Main {
 
     public static void main(String[] args) {
         int boardlength = 10; //Initialize variable for board dimensions
         int difficulty = 50; //Set the variable for changing the density of planets in the array
-        double randomX = 0; //Random number generator for X coordinate
-        double randomY = 0; //Random number generator for Y coordinate
-        double randomCount = 0;
+        int randomX = 0; //Random number generator for X coordinate
+        int randomY = 0; //Random number generator for Y coordinate
         int x = 0; //X coordinate
         int y = 0; //Y coordinate
 
@@ -17,21 +17,21 @@ public class Main {
 
         //Fills the board with planets at random spots
         for(int i = 0; i < difficulty; i++) {
-            randomX = Math.random() * boardlength;
-            randomY = Math.random() * boardlength;
-            randomCount = (int) (Math.random() * 4)+1;
-            if (randomCount == 1) {
-                boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Icy and cold yet has soothing blue charm to it");
-            }
-            if (randomCount == 2) {
-                boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Dry and hot and makes you sweaty just looking at it");
-            }
-            if (randomCount == 3) {
-                boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Lush and humid filled with endless forests, swamps, and marshes");
-            }
-            if (randomCount == 4) {
-                boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Windy and temperate, it reminds you of a place you left so long ago..");
-            }
+            randomX = (int) (Math.random() * boardlength);
+            randomY = (int) (Math.random() * boardlength);
+            // randomCount = (int) (Math.random() * 4)+1;
+            // if (randomCount == 1) {
+            boardarray[(randomX)][(randomY)] = new planet(3);
+            // }
+            // if (randomCount == 2) { //             // if (randomCount == 2) { //
+            //     boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Dry and hot and makes you sweaty just looking at it");
+            // }
+            // if (randomCount == 3) {
+            //     boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Lush and humid filled with endless forests, swamps, and marshes");
+            // }
+            // if (randomCount == 4) {
+            //     boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Windy and temperate, it reminds you of a place you left so long ago..");
+            // }
         }
 
         //Loops through every spot in the array and if it has no planet, fills the spot with an empty space

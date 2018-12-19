@@ -69,6 +69,7 @@ public class Boardclass {
                     System.out.println("You move further into the abyss of space");
                 } else {
                     System.out.println("You have found the planet " + playerCurrentLocation.getName());
+                    System.out.println(playerCurrentLocation.getDescription());
                     System.out.println((board[player.getxLoc()][player.getyLoc()]).getName());
                 }
             }
