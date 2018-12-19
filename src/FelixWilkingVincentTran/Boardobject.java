@@ -9,10 +9,21 @@ public class Boardobject {
             "Lush and humid filled with endless forests, swamps, and marshes",
             "Windy and temperate, it reminds you of a place you left so long ago.."};
     private String description;
+    private String[] sizes = {"tiny", "huge", "small", "massive", "average sized"};
+    private String size;
+
 
     public Boardobject(){
         this.name = generateName();
         this.description = descriptions[(int) (Math.random() * descriptions.length)];
+        this.size = sizes[(int) (Math.random() * sizes.length)];
+
+    }
+
+
+    public String getSize() {
+
+        return size;
     }
 
     public String generateName(){

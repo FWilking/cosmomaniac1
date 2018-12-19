@@ -21,7 +21,7 @@ Main {
             randomY = (int) (Math.random() * boardlength);
             // randomCount = (int) (Math.random() * 4)+1;
             // if (randomCount == 1) {
-            boardarray[(randomX)][(randomY)] = new planet(3);
+            boardarray[(randomX)][(randomY)] = new planet();
             // }
             // if (randomCount == 2) { //             // if (randomCount == 2) { //
             //     boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Dry and hot and makes you sweaty just looking at it");
