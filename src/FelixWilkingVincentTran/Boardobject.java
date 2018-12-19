@@ -21,7 +21,6 @@ public class Boardobject {
         return name;
     }
 
-
     public String getName() {
         if (this.name == " ")
         {

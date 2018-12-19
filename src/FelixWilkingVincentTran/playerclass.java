@@ -36,5 +36,10 @@ public class playerclass extends Boardobject {
         return yLoc;
     }
 
+    public void printPlayerCurrentLocation()
+    {
+        System.out.println("Your current location is (" + getxLoc() + "," + getyLoc() + ")");
+    }
+
 
 }

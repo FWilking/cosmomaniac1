@@ -15,9 +15,14 @@ public class planet extends Boardobject {
         planet.planets.add(this);
     }
 
+    public planet getPlanet()
+    {
+        return planets.get(0);
+    }
+
     public String getDescription()
     {
-        return description;
+        return planets.get(0).getDescription();
     }
 
 }

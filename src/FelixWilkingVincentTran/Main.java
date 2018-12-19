@@ -19,11 +19,11 @@ public class Main {
         for(int i = 0; i < difficulty; i++) {
             randomX = Math.random() * boardlength;
             randomY = Math.random() * boardlength;
-            randomCount = Math.random() * 5;
-            //if (randomCount == 1) {
+            randomCount = (int) (Math.random() * 4)+1;
+            if (randomCount == 1) {
                 boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Icy and cold yet has soothing blue charm to it");
-            //}
-            /*if (randomCount == 2) {
+            }
+            if (randomCount == 2) {
                 boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Dry and hot and makes you sweaty just looking at it");
             }
             if (randomCount == 3) {
@@ -31,7 +31,7 @@ public class Main {
             }
             if (randomCount == 4) {
                 boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Windy and temperate, it reminds you of a place you left so long ago..");
-            }*/
+            }
         }
 
         //Loops through every spot in the array and if it has no planet, fills the spot with an empty space
@@ -56,13 +56,12 @@ public class Main {
         //Creates the player and inserts them into the map
         playerclass player1 = new playerclass("Jaune", 0, 0);
         boardarray[player1.xLoc][player1.yLoc] = player1;
-        System.out.println(player1.xLoc +" "+ player1.yLoc);
 
         Boardclass board = new Boardclass(boardarray);
         board.printboard();
 
-        System.out.println("You have entered the map at "+player1.xLoc +" "+ player1.yLoc + " " + boardarray[0][0].getName());
-        System.out.println("Please pick a direction to move n,e,w,s");
+        player1.printPlayerCurrentLocation();
+        System.out.println("Please pick a direction to move (N,S,E,W) or (q) to quit");
 
 
         //Scans for user input and will move player accordingly North/West/East/South
@@ -70,6 +69,7 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             String input = sc.nextLine();
             Boardclass.moveplayer(player1, boardarray, input, boardlength);
+            //System.out.println("this is board array " + boardar);
             board.printboard();
         }
     }

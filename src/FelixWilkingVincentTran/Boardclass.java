@@ -26,96 +26,52 @@ public class Boardclass {
 
     public static boolean moveplayer(playerclass player, Boardobject[][] board, String input, int length){
 
-        int x = player.getxLoc();
-        int y = player.getyLoc();
-        Boardobject Hold = board[player.xLoc][player.yLoc];
+        int playerPreviousXLocation = player.getxLoc();
+        int playerPreviousYLocation = player.getyLoc();
+        Boardobject playerCurrentLocation;
 
 
         if (input.equals("n")) {
+            //checking boundary condition
             if (player.getxLoc() != 0) {
-                Hold = board[player.xLoc-1][player.yLoc]; //Holds what is in the spot to the north of the player
-                player.setxLoc(x - 1); //Decrease x coord by 1
-                board[player.xLoc][player.yLoc] = player; //Sets the spot to the north as the player now
-                System.out.println("Your location is now " + player.xLoc + " " + player.yLoc);//Prints out player's current location
-                if (Hold.getName().equals(" "))
-                {
-                    System.out.println("You move further into the abyss of space");
-                }
-                else {
-                    System.out.println("You have found the planet " + Hold.getName());
-                }
-                board[player.xLoc][player.yLoc] = Hold; //Sets the current spot back to the planet or empty space
-            }
-            if (player.getxLoc() == 0) {
-                System.out.println("Your move is invalid please try a different one!");
-                return false;
+                player.setxLoc(playerPreviousXLocation - 1); //Decrease x coord by 1
             }
         }
-
-        if (input.equals("w")) {
+        else if (input.equals("w")) {
+            //checking boundary condition
             if (player.getyLoc() != 0) {
-                Hold = board[player.xLoc][player.yLoc-1]; //Holds what is in the spot to the left of the player
-                player.setyLoc(y -1 ); //Decrease y coord by 1
-                board[player.xLoc][player.yLoc] = player; //Sets the spot to the left as the player now
-                System.out.println("Your location is now " + player.xLoc + " " + player.yLoc);//Prints out player's current location
-                if (Hold.getName().equals(" "))
-                {
-                    System.out.println("You move further into the abyss of space");
-                }
-                else {
-                    System.out.println("You have found the planet " + Hold.getName());
-                }
-                board[player.xLoc][player.yLoc] = Hold; //Sets the current spot back to the planet or empty space
-            }
-            if (player.getyLoc() == 0) {
-                System.out.println("Your move is invalid please try a different one!");
-                return false;
+                player.setyLoc(playerPreviousYLocation - 1); //Decrease y coord by 1
             }
         }
-
-        if (input.equals("e")) {
+        else if (input.equals("e")) {
+            //checking boundary condition
             if (player.getyLoc() != length-1) {
-                Hold = board[player.xLoc][player.yLoc+1]; //Holds what is in the spot to the right of the player
-                System.out.println(Hold.getName());
-                player.setyLoc(y + 1); //Increase y coord by 1
-                board[player.xLoc][player.yLoc] = player; //Sets the spot to the right as the player now
-                System.out.println("Your location is now " + player.xLoc + " " + player.yLoc);//Prints out player's current location
-                if (Hold.getName().equals(" "))
-                {
-                    System.out.println("You move further into the abyss of space");
-                }
-                else {
-                    System.out.println("You have found the planet " + Hold.getName());
-                }
-                board[player.xLoc][player.yLoc] = Hold; //Sets the current spot back to the planet or empty space
+                player.setyLoc(playerPreviousYLocation + 1); //Increase y coord by 1
             }
-            if (player.getyLoc() == length-1) {
-                System.out.println("Your move is invalid please try a different one!");
-                return false;
+        }
+        else if (input.equals("s")) {
+            //checking boundary condition
+            if (player.getxLoc() != length - 1) {
+                player.setxLoc(playerPreviousXLocation + 1); //Increase x coord by 1
             }
         }
 
-        if (input.equals("s")) {
-            if (player.getxLoc() != length-1) {
-                Hold = board[player.xLoc+1][player.yLoc]; //Holds what is in the spot to the south of the player
-                player.setxLoc(x + 1); //Increase x coord by 1
-                board[player.xLoc][player.yLoc] = player; //Sets the spot to the south as the player now
-                System.out.println("Your location is now " + player.xLoc + " " + player.yLoc); //Prints out player's current location
-                if (Hold.getName().equals(" "))
-                {
-                    System.out.println("You move further into the abyss of space");
-                }
-                else {
-                    System.out.println("You have found the planet " + Hold.getName());
-                }
-                board[player.xLoc][player.yLoc] = Hold; //Sets the current spot back to the planet or empty space
-            }
-            if (player.getxLoc() == length-1) {
-                System.out.println("Your move is invalid please try a different one!");
+        player.printPlayerCurrentLocation();
+            //printout warning if player tries to make invalid move
+            if (player.getxLoc() == playerPreviousXLocation && player.getyLoc() == playerPreviousYLocation) {
+                System.out.println("Your move was invalid please try a different one!");
                 return false;
             }
-        }
+            else { //valid move
+                //print the name of the spot the player moves to
+                playerCurrentLocation = board[player.getxLoc()][player.getyLoc()];
+                if (playerCurrentLocation.getName().equals(" ")) {
+                    System.out.println("You move further into the abyss of space");
+                } else {
+                    System.out.println("You have found the planet " + playerCurrentLocation.getName());
+                    System.out.println((board[player.getxLoc()][player.getyLoc()]).getName());
+                }
+            }
         return true;
-
     }
 }
