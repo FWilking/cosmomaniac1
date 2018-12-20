@@ -29,37 +29,40 @@ public class Boardclass {
         int playerPreviousXLocation = player.getxLoc();
         int playerPreviousYLocation = player.getyLoc();
         Boardobject playerCurrentLocation;
-
+        boolean validMove = true;
 
         if (input.equals("n")) {
             //checking boundary condition
-            if (player.getxLoc() != 0) {
-                player.setxLoc(playerPreviousXLocation - 1); //Decrease x coord by 1
+            if (player.getxLoc() == 0) {
+                validMove = false;
             }
+            player.setxLoc(playerPreviousXLocation - 1); //Decrease x coord by 1
         }
         else if (input.equals("w")) {
             //checking boundary condition
-            if (player.getyLoc() != 0) {
-                player.setyLoc(playerPreviousYLocation - 1); //Decrease y coord by 1
+            if (player.getyLoc() == 0) {
+                validMove = false;
             }
+            player.setyLoc(playerPreviousYLocation - 1); //Decrease y coord by 1
         }
         else if (input.equals("e")) {
             //checking boundary condition
-            if (player.getyLoc() != length-1) {
-                player.setyLoc(playerPreviousYLocation + 1); //Increase y coord by 1
+            if (player.getyLoc() == length-1) {
+                validMove = false;
             }
+            player.setyLoc(playerPreviousYLocation + 1); //Increase y coord by 1
         }
         else if (input.equals("s")) {
             //checking boundary condition
-            if (player.getxLoc() != length - 1) {
-                player.setxLoc(playerPreviousXLocation + 1); //Increase x coord by 1
+            if (player.getxLoc() == length - 1) {
+                validMove = false;
             }
+            player.setxLoc(playerPreviousXLocation + 1); //Increase x coord by 1
         }
 
         player.printPlayerCurrentLocation();
-            //printout warning if player tries to make invalid move
-            if (player.getxLoc() == playerPreviousXLocation && player.getyLoc() == playerPreviousYLocation) {
-                System.out.println("Your move was invalid please try a different one!");
+            //Ends program if invalid move is made
+            if (validMove == false) {
                 return false;
             }
             else { //valid move
@@ -71,7 +74,6 @@ public class Boardclass {
                     System.out.println("You have found the planet " + playerCurrentLocation.getName());
                     System.out.println("It is a " + playerCurrentLocation.getSize() + " planet");
                     System.out.println(playerCurrentLocation.getDescription());
-                    System.out.println((board[player.getxLoc()][player.getyLoc()]).getName());
                 }
             }
         return true;

@@ -12,6 +12,7 @@ Main {
         int randomY = 0; //Random number generator for Y coordinate
         int x = 0; //X coordinate
         int y = 0; //Y coordinate
+        boolean continueOrStop = true;
 
         Boardobject[][] boardarray = new Boardobject[boardlength][boardlength]; //Sets the board x and y length
 
@@ -19,19 +20,7 @@ Main {
         for(int i = 0; i < difficulty; i++) {
             randomX = (int) (Math.random() * boardlength);
             randomY = (int) (Math.random() * boardlength);
-            // randomCount = (int) (Math.random() * 4)+1;
-            // if (randomCount == 1) {
             boardarray[(randomX)][(randomY)] = new planet();
-            // }
-            // if (randomCount == 2) { //             // if (randomCount == 2) { //
-            //     boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Dry and hot and makes you sweaty just looking at it");
-            // }
-            // if (randomCount == 3) {
-            //     boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Lush and humid filled with endless forests, swamps, and marshes");
-            // }
-            // if (randomCount == 4) {
-            //     boardarray[(int) (randomX)][(int) (randomY)] = new planet(3, "Windy and temperate, it reminds you of a place you left so long ago..");
-            // }
         }
 
         //Loops through every spot in the array and if it has no planet, fills the spot with an empty space
@@ -58,19 +47,21 @@ Main {
         boardarray[player1.xLoc][player1.yLoc] = player1;
 
         Boardclass board = new Boardclass(boardarray);
-        board.printboard();
 
+        //Inital printout of player's location and instruction to the player
         player1.printPlayerCurrentLocation();
         System.out.println("Please pick a direction to move (N,S,E,W) or (q) to quit");
 
 
         //Scans for user input and will move player accordingly North/West/East/South
-        while (true) {
+        while (continueOrStop) {
             Scanner sc = new Scanner(System.in);
             String input = sc.nextLine();
-            Boardclass.moveplayer(player1, boardarray, input, boardlength);
-            //System.out.println("this is board array " + boardar);
-            board.printboard();
+            continueOrStop = Boardclass.moveplayer(player1, boardarray, input, boardlength);
+            if (continueOrStop == false)
+            {
+                System.out.println("You have traversed into the outer rim of space, aliens gobble you up");
+            }
         }
     }
 }
